@@ -64,3 +64,6 @@ h1.heading {
         .tags li{
             color: #3D9970;
         }
+    .pagination{
+        margin-bottom: 50px;
+    }
