@@ -30,15 +30,15 @@
                         ?>
                     </p>
                     <?php   the_content(); ?>
+
+                    <?php 
+                        next_post_link( '<strong>%link</strong>' );
+                        echo '</br>';
+                        previous_post_link();
+                    ?>
                 </div>
             </div>
-            <div class="row">
-                <?php if(comments_open()):?>
-                <div class="col-md-10 offset-md-1">
-                    <?php comments_template(); ?>
-                </div>
-                <?php endif; ?>
-            </div>
+            
 
         </div>
     </div>
