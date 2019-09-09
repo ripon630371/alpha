@@ -13,3 +13,16 @@ function alpha_asstes(){
 }
 
 add_action('wp_enqueue_scripts','alpha_asstes');
+
+function alpha_sidebar(){
+	register_sidebar( array(
+        'name' => __( 'Right Sidebar', 'alpha' ),
+        'id' => 'sidebar-1',
+        'description' => __( 'Right Sidebar 1', 'alpha' ),
+        'before_widget' => '<li id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</li>',
+		'before_title'  => '<h2 class="widgettitle">',
+		'after_title'   => '</h2>',
+    ) );
+}
+add_action( 'widgets_init', 'alpha_sidebar' );
