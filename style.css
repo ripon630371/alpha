@@ -84,3 +84,8 @@ h2.post-title {
     color: #222;
     text-decoration: none;
 }
+.list-inline {
+    padding-left: 0;
+    list-style: none;
+    padding-bottom: 50px;
+}
