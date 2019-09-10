@@ -25,7 +25,7 @@
                     <p>
                         <?php
                             $thumbnail_url = get_the_post_thumbnail_url( null, "large" );
-                            printf( '<a class="popup" href="%s" data-featherlight="image">', $thumbnail_url );
+                            echo '<a class="popup" href="#" data-featherlight="image">';
                                 if(has_post_thumbnail()){
                                     the_post_thumbnail("large",array("class"=>"img-fluid"));
                             echo '</a>';
