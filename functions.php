@@ -99,6 +99,21 @@ function alpha_menu_item_class( $classes, $item ) {
 
 add_filter( "nav_menu_css_class", "alpha_menu_item_class", 10, 2 );
 
+/*page add image for action hook */
+function alpha_about_page_template_banner() {
+     if ( is_page() ) {
+            $alpha_feat_image = get_the_post_thumbnail_url( null, "large" );
+            ?>
+            <style>
+                .page-header {
+                    background-image: url(<?php echo $alpha_feat_image;?>);
+                }
+            </style>
+            <?php
+        }
+}
+add_action( "wp_head", "alpha_about_page_template_banner", 11 );
+
 
 
 
