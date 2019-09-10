@@ -24,9 +24,13 @@
                 <div class="col-md-10 offset-md-1">
                     <p>
                         <?php
-                            if(has_post_thumbnail()){
-                                the_post_thumbnail("large",array("class"=>"img-fluid"));
-                            }
+                            $thumbnail_url = get_the_post_thumbnail_url( null, "large" );
+                            printf( '<a class="popup" href="%s" data-featherlight="image">', $thumbnail_url );
+                                if(has_post_thumbnail()){
+                                    the_post_thumbnail("large",array("class"=>"img-fluid"));
+                            echo '</a>';
+                                }
+
                         ?>
                     </p>
                     <?php   the_content(); ?>
