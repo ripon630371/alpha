@@ -89,3 +89,23 @@ h2.post-title {
     list-style: none;
     padding-bottom: 50px;
 }
+
+.header-logo {
+    text-align: center;
+    margin: auto;
+}
+.header-logo img {
+    margin-top: 50px;
+    border-radius: 50%;
+}
+.errorview{
+    margin-top: 200px;
+    margin-bottom: 465px;
+}
+.errorview h1 {
+    margin-bottom: 30px;
+    color: red;
+    font-size: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+}

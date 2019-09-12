@@ -1,6 +1,17 @@
 <div class="header">
     <div class="container">
         <div class="row">
+            <div class="header-logo text-center">
+                <?php
+                if ( current_theme_supports( "custom-logo" ) ):
+                    ?>
+                    <div class="header-logo text-center">
+                        <?php the_custom_logo(); ?>
+                    </div>
+                <?php
+                endif;
+                ?>
+            </div>
             <div class="col-md-12">
                 <h3 class="tagline">
                     <?php bloginfo( "description" ); ?>

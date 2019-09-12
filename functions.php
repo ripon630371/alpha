@@ -1,5 +1,6 @@
 <?php
 
+/*version check herr*/
 
 if ( site_url() == "http://demo.lwhh.com" ) {
     define( "VERSION", time() );
@@ -8,6 +9,7 @@ if ( site_url() == "http://demo.lwhh.com" ) {
 }
 
 /*after setup theme function here*/
+
 function alpha_bootstrapping() {
     load_theme_textdomain( "alpha" );
     add_theme_support( "post-thumbnails" );
@@ -19,19 +21,24 @@ function alpha_bootstrapping() {
     $alpha_custom_header_details = array(
         'header-text'        => true,
         'default-text-color' => '#222',
-      /*  'width'              => 1200,
+        'width'              => 1200,
         'height'             => 600,
         'flex-height'        => true,
-        'flex-width'         => true,*/
+        'flex-width'         => true,
     );
     add_theme_support( "custom-header", $alpha_custom_header_details );
-}
 
+    $alpha_custom_logo_defaults = array(
+        "width"  => '100',
+        "height" => '100'
+    );
+    add_theme_support( "custom-logo", $alpha_custom_logo_defaults );
+}
 add_action( "after_setup_theme", "alpha_bootstrapping" );
 
-
+/* wp enqueue js css here*/
 function alpha_assets() {
-    wp_enqueue_style( "alpha", get_stylesheet_uri(), null, VERSION );
+    wp_enqueue_style( "alpha", get_stylesheet_uri(""), null, VERSION );
     wp_enqueue_style( "bootstrap", "//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" );
     wp_enqueue_style( "featherlight-css", "//cdn.rawgit.com/noelboss/featherlight/1.7.13/release/featherlight.min.css" );
 
@@ -45,6 +52,7 @@ function alpha_assets() {
 
 add_action( "wp_enqueue_scripts", "alpha_assets" );
 
+/*sidebar register here*/
 function alpha_sidebar() {
     register_sidebar(
         array(
@@ -85,6 +93,7 @@ function alpha_sidebar() {
 
 add_action( "widgets_init", "alpha_sidebar" );
 
+/* password function here*/
 function alpha_the_excerpt( $excerpt ) {
     if ( ! post_password_required() ) {
         return $excerpt;
@@ -92,23 +101,21 @@ function alpha_the_excerpt( $excerpt ) {
         echo get_the_password_form();
     }
 }
-
 add_filter( "the_excerpt", "alpha_the_excerpt" );
 
-
+/*password and change title*/
 function alpha_protected_title_change() {
     return "%s";
 }
 
 add_filter( "protected_title_format", "alpha_protected_title_change" );
 
-
+/*menu items here*/
 function alpha_menu_item_class( $classes, $item ) {
     $classes[] = "list-inline-item";
 
     return $classes;
 }
-
 add_filter( "nav_menu_css_class", "alpha_menu_item_class", 10, 2 );
 
 /*page add image for action hook */
