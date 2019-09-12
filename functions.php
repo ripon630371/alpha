@@ -7,7 +7,7 @@ if ( site_url() == "http://demo.lwhh.com" ) {
     define( "VERSION", wp_get_theme()->get( "Version" ) );
 }
 
-
+/*after setup theme function here*/
 function alpha_bootstrapping() {
     load_theme_textdomain( "alpha" );
     add_theme_support( "post-thumbnails" );
@@ -15,9 +15,20 @@ function alpha_bootstrapping() {
     register_nav_menu( "topmenu", __( "Top Menu", "alpha" ) );
     register_nav_menu( "footermenu", __( "Footer Menu", "alpha" ) );
     add_theme_support( "custom-header" );
+
+    $alpha_custom_header_details = array(
+        'header-text'        => true,
+        'default-text-color' => '#222',
+      /*  'width'              => 1200,
+        'height'             => 600,
+        'flex-height'        => true,
+        'flex-width'         => true,*/
+    );
+    add_theme_support( "custom-header", $alpha_custom_header_details );
 }
 
 add_action( "after_setup_theme", "alpha_bootstrapping" );
+
 
 function alpha_assets() {
     wp_enqueue_style( "alpha", get_stylesheet_uri(), null, VERSION );
@@ -112,7 +123,8 @@ function alpha_about_page_template_banner() {
             </style>
             <?php
         }
-    // custom header function here
+
+// custom header function here
     if ( is_front_page() ) {
             if ( current_theme_supports( "custom-header" ) ) {
                 ?>
@@ -121,6 +133,15 @@ function alpha_about_page_template_banner() {
                         background-image: url(<?php header_image();?>);
                         background-size: cover;
                         margin-bottom: 50px;
+                    }
+                    .header h1.heading a, h3.tagline {
+                        color: #<?php echo get_header_textcolor();?>;
+
+                    <?php
+                    if(!display_header_text()){
+                        echo "display: none;";
+                    } ?>
+
                     }
 
                 </style>
